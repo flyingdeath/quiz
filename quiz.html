@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" type="text/css" href="theme.css">
+	<title>Sliding Puzzle Quiz</title>
+	<!--
+
+	The Sliding Puzzle Quiz
+
+	1. Make the markup below appear as the sliding puzzle in the screenshot: "expected desktop result.png"
+		• It has to work in any one desktop browser: Safari, Chrome, Firefox, MS IE, or Opera
+		• Any valid CSS is permitted
+		• Please do not make any changes to the html in the body tag
+
+	2. Make the styled sliding puzzle appear just as the one in the screenshot: "expected mobile result.png"
+		• It has to work in any one mobile browser: Safari on iOS, "Internet" on Android, Chrome on Android
+		• The screenshot demonstrates the initial scale of the page
+		• The user should be able zoom the page
+
+	-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="yui/build/animation/animation-min.js"></script>
+<script type="text/javascript" src="yui/build/dragdrop/dragdrop.js"></script>
+<script type="text/javascript" src="helperClass.js"></script>
+<script type="text/javascript" src="listSortClass.js"></script>
+
+
+
+<script>
+window.onload = function (){
+
+
+        var ls = new listSortClass({itemClassName: 'Tile',
+                                            cue:{},
+                                            containerId:'SlidingPuzzle'});
+
+		setInterval(function(){
+					var domRef = document.getElementById('SlidingPuzzle');
+					var list = [5,8,2,3,7,4,1,6];
+					var flag = true;
+					for(var i =  0 ; i < domRef.children.length ; i++){
+						if(String(list[i]) !==  domRef.children[i].innerHTML){
+							flag = false;
+							break;
+						}
+					}
+					if(flag){
+						var h = new helperClass();
+						h.show('completed');
+					}
+
+		           }, 1000);
+
+}
+</script>
+</head>
+<body>
+
+	<!-- Do not edit any html in the body tag -->
+	<figure class="SlidingPuzzleFigure">
+
+		<ul class="SlidingPuzzle" id="SlidingPuzzle">
+			<li class="Tile Tile1" id="Tile1">1</li>
+			<li class="Tile Tile2" id="Tile2">2</li>
+			<li class="Tile Tile3" id="Tile3">3</li>
+			<li class="Tile Tile4" id="Tile4">4</li>
+			<li class="Tile Tile5" id="Tile5">5</li>
+			<li class="Tile Tile6" id="Tile6">6</li>
+			<li class="Tile Tile7" id="Tile7">7</li>
+			<li class="Tile Tile8" id="Tile8">8</li>
+		</ul>
+
+		<div id="completed">You have completed the challenge </div>
+
+		<figcaption>A Sliding Puzzle</figcaption>
+	</figure>
+	<!-- Do not edit any html in the body tag -->
+
+</body>
+
+
+
+
+</html>
